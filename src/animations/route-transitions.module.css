@@ -1,0 +1,10 @@
+.routeWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.routeWrapper > div {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+}
