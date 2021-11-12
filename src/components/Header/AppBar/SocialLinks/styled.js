@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--white);
   list-style: none;
 `;
 export const Li = styled.li`
@@ -22,7 +22,7 @@ export const IconWrapper = styled.svg`
   transition: fill 200ms linear;
   &:hover,
   ${Link}:focus > & {
-    fill: #e99f17;
+    fill: var(--accent-color);
     transition: fill 200ms linear;
   }
 `;

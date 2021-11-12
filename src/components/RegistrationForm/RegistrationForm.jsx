@@ -1,16 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Loader from 'react-loader-spinner';
+
 import { NavLink } from 'react-router-dom';
 import { StyledAuthForm, StyledInput } from 'components/LoginForm/styled';
 import Button from 'components/Button/Button';
 import { register } from 'redux/auth/auth-operations';
+import { getIsAuthorizing } from 'redux/auth/auth-selectors';
 
 export default function RegistrationForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const isAuthorizing = useSelector(getIsAuthorizing);
   const dispatch = useDispatch();
 
   const handleStateChange = ({ currentTarget: { name, value } }) => {
@@ -37,10 +39,9 @@ export default function RegistrationForm() {
     setEmail('');
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
-
     resetFields();
   };
 
@@ -81,7 +82,7 @@ export default function RegistrationForm() {
         big
         style={{ marginBottom: '10px' }}
         text={
-          isLoading ? (
+          isAuthorizing ? (
             <Loader
               type="Oval"
               color="#da5f01"

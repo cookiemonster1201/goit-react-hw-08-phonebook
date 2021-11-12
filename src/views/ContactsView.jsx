@@ -6,24 +6,16 @@ import { ViewWrapper } from './styled';
 import { useGetAllContactsQuery } from 'redux/contactsApi/contacts-slice';
 
 export default function ContactsView() {
-  const { data: contacts, isFetching: isLoading } = useGetAllContactsQuery();
+  const { data: contacts, isError } = useGetAllContactsQuery();
   return (
     <ViewWrapper>
       <Hero />
-      {isLoading ? (
-        <Loader
-          type="Oval"
-          color="#da5f01"
-          height={13}
-          width={13}
-          style={{ margin: '0 auto' }}
-        />
+      {isError ? (
+        <p>Oops, something went wrong(</p>
       ) : (
-        <>
-          <Filter contacts={contacts} />
-          <Footer />
-        </>
+        <Filter contacts={contacts} />
       )}
+      <Footer />
     </ViewWrapper>
   );
 }

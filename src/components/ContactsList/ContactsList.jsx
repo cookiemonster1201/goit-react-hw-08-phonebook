@@ -24,6 +24,6 @@ export default function ContactsList({ filteredContacts }) {
   );
 }
 
-ContactsListItem.propTypes = {
+ContactsList.propTypes = {
   filteredContacts: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };

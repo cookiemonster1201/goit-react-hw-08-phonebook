@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import { IconWrapper } from './AppBar/SocialLinks/styled';
 
 export const PageHeader = styled.header`
   display: flex;
   flex-direction: column;
-
   min-height: 50px;
-  border-bottom: 1px solid #e99f17;
 `;
 
 export const Div = styled.div`
@@ -20,11 +19,18 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 10px 90px;
 
-  background-color: #e99f17;
+  background-color: var(--accent-color);
 `;
 
 export const Span = styled.span`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
-  color: #2f3438;
+  color: var(--white);
+`;
+
+export const LogoWrapper = styled(IconWrapper)`
+  width: 35px;
+  height: 35px;
+  fill: var(--white);
+  margin-left: 10px;
 `;

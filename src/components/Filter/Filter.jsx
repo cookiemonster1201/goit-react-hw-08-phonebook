@@ -29,5 +29,5 @@ export default function Filter({ contacts }) {
 }
 
 Filter.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  contacts: PropTypes.arrayOf(PropTypes.shape),
 };

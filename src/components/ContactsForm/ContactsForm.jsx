@@ -9,6 +9,10 @@ import {
 import doesContactExists from 'utils/does-contact-exists';
 import Button from 'components/Button/Button';
 import { Form, Input } from './styled';
+import {
+  showErrorNotification,
+  showSuccessNotification,
+} from 'utils/notifications';
 
 export default function ContactsForm() {
   const [name, setName] = useState('');
@@ -40,26 +44,12 @@ export default function ContactsForm() {
     if (doesContactExists(contacts, name, number)) {
       return;
     }
-
     try {
       await addContact({ name, number });
-      toast.success('Contact added!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
+      showSuccessNotification('Contact added!');
     } catch {
-      toast.error('Oooops, something went wrong(!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
+      showErrorNotification('Oops, something went wrong');
     }
-
     resetFields();
   };
 

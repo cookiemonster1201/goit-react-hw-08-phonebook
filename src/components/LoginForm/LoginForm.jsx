@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
 import Button from 'components/Button/Button';
 import { login } from 'redux/auth/auth-operations';
 import { StyledAuthForm, StyledInput } from './styled';
+import { getIsAuthorizing } from 'redux/auth/auth-selectors';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const isAuthorizing = useSelector(getIsAuthorizing);
 
   const handleStateChange = ({ currentTarget: { name, value } }) => {
     switch (name) {
@@ -64,17 +66,17 @@ export default function LoginForm() {
         big
         style={{ marginBottom: '20px' }}
         text={
-          // isAdding ? (
-          //   <Loader
-          //     type="Oval"
-          //     color="#da5f01"
-          //     height={14}
-          //     width={14}
-          //     style={{ margin: '0 auto' }}
-          //   />
-          // ) : (
-          'Log in'
-          // )
+          isAuthorizing ? (
+            <Loader
+              type="Oval"
+              color="#da5f01"
+              height={14}
+              width={14}
+              style={{ margin: '0 auto' }}
+            />
+          ) : (
+            'Log in'
+          )
         }
       />
       <NavLink

@@ -7,15 +7,19 @@ export const StyledButton = styled.button`
   text-transform: ${props => (props.big ? 'uppercase' : 'lowercase')};
   font-size: ${props => (props.big ? '16px' : '14px')};
   color: #fff;
-  background: var(--accent-color);
-  border: 1px solid var(--accent-color);
+  background: ${props =>
+    props.green ? 'rgb(27, 156, 27)' : 'var(--accent-color)'};
+
+  border: 1px solid
+    ${props => (props.green ? 'rgb(27, 156, 27)' : 'var(--accent-color)')};
   border-radius: 7px;
 
   transition: color 250ms linear, background-color 250ms linear;
 
   &:hover,
   &:focus {
-    color: var(--accent-color);
+    color: ${props =>
+      props.green ? 'rgb(27, 156, 27)' : 'var(--accent-color)'};
     background: var(--white);
   }
 `;

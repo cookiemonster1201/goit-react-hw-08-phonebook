@@ -17,6 +17,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { contactsApi } from './contactsApi/contacts-slice';
 import authReducer from 'redux/auth/auth-slice';
+import themeReducer from './theme/theme-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,11 +34,17 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+  // whitelist: ['token'],
+};
 
 const store = configureStore({
   reducer: combineReducers({
     [contactsApi.reducerPath]: contactsApi.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    theme: persistReducer(themePersistConfig, themeReducer),
   }),
   middleware,
   devTools: process.env.NODE_ENV === 'development',

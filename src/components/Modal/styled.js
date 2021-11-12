@@ -18,5 +18,5 @@ export const ModalDiv = styled.div`
   width: 100%;
   max-height: 400px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--white);
 `;

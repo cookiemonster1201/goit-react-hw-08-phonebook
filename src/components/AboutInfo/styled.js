@@ -5,12 +5,12 @@ export const ServiceName = styled.button`
   border: none;
   background-color: transparent;
   font-size: 16px;
-  color: #fff;
+  color: var(--white);
   border-bottom: 1px solid transparent;
   transition: border-bottom 200ms linear;
   &:hover,
   &:focus {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--white);
     transition: border-bottom 200ms linear;
   }
 `;
