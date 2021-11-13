@@ -1,1 +1,1 @@
-export const getDarkThemeEnabled = state => state.darkThemeEnabled;
+export const getDarkThemeEnabled = state => state.theme.darkThemeEnabled;

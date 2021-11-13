@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Modal from 'components/Modal/Modal';
 import modalOpenTransition from 'components/Modal/transitions.module.css';
-import { ServiceName, Ul, Li, ModalButton } from './styled';
+import { ServiceName, Ul, Li, ModalButton } from './AboutInfo-styled';
 import { SERVICE_LIST } from 'constants/constants';
 
 export default function AboutInfo() {
@@ -46,7 +46,7 @@ export default function AboutInfo() {
           maxime consectetur molestiae unde maiores dicta facere nam libero
           obcaecati dolorem saepe id, rem sunt eos itaque quae mollitia possimus
           quidem? Praesentium nulla nihil sed!
-          <ModalButton text={'Close'} onClick={toggleModal} />
+          <ModalButton text={'Close'} onClick={toggleModal} type={'button'} />
         </Modal>
       </CSSTransition>
     </>

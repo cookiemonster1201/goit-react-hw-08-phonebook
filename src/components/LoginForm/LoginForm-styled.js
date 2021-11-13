@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Input } from 'components/ContactsForm/styled';
+import { Form, Input } from 'components/ContactsForm/ContactsForm-styled';
 
 export const StyledAuthForm = styled(Form)`
   flex-direction: column;

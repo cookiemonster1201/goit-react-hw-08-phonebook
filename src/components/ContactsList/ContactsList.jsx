@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import ContactsListItem from 'components/ContactsList/ContactsListItem/ContactsListItem';
-import { Ul, Li, P } from './styled';
+import { Ul, Li, P } from './ContactsList-styled';
 
 export default function ContactsList({ filteredContacts }) {
   return (
@@ -13,7 +13,10 @@ export default function ContactsList({ filteredContacts }) {
             )
             .map(contact => (
               <Li key={contact.id}>
-                <ContactsListItem contact={contact} />
+                <ContactsListItem
+                  contact={contact}
+                  allContacts={filteredContacts}
+                />
               </Li>
             ))}
         </Ul>

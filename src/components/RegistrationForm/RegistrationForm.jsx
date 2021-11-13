@@ -3,7 +3,10 @@ import { useState } from 'react';
 import Loader from 'react-loader-spinner';
 
 import { NavLink } from 'react-router-dom';
-import { StyledAuthForm, StyledInput } from 'components/LoginForm/styled';
+import {
+  StyledAuthForm,
+  StyledInput,
+} from 'components/LoginForm/LoginForm-styled';
 import Button from 'components/Button/Button';
 import { register } from 'redux/auth/auth-operations';
 import { getIsAuthorizing } from 'redux/auth/auth-selectors';
@@ -33,16 +36,9 @@ export default function RegistrationForm() {
     }
   };
 
-  const resetFields = () => {
-    setPassword('');
-    setName('');
-    setEmail('');
-  };
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
-    resetFields();
   };
 
   return (

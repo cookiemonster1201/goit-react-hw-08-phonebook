@@ -1,6 +1,6 @@
 import UserMenu from 'components/Header/AppBar/UserMenu/UserMenu';
 import SocialLinks from './SocialLinks/SocialLinks';
-import { Wrapper } from './styled';
+import { Wrapper } from './AppBar-styled';
 
 export default function AppBar() {
   return (

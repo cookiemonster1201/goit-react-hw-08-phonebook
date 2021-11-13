@@ -1,5 +1,5 @@
 import AboutInfo from 'components/AboutInfo/AboutInfo';
-import { StyledFooter, P } from './styled';
+import { StyledFooter, P } from './Footer-styled';
 
 export default function Footer() {
   return (

@@ -1,18 +1,22 @@
 import React from 'react';
-import './ThemeToggle.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDarkThemeEnabled } from 'redux/theme/theme-selectors';
+import { ToggleControl, Input, Control } from './ThemeToggle-styled';
+import { toggleDarkTheme } from 'redux/theme/theme-actions';
 
 const ThemeToggle = () => {
+  const darkThemeEnabled = useSelector(getDarkThemeEnabled);
+  const dispatch = useDispatch();
+
   return (
-    <>
-      <input
-        className="react-switch-checkbox"
-        id={`react-switch-new`}
+    <ToggleControl>
+      <Input
         type="checkbox"
+        checked={darkThemeEnabled}
+        onChange={() => dispatch(toggleDarkTheme())}
       />
-      <label className="react-switch-label" htmlFor={`react-switch-new`}>
-        <span className={`react-switch-button`} />
-      </label>
-    </>
+      <Control></Control>
+    </ToggleControl>
   );
 };
 

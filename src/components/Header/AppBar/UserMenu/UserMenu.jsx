@@ -7,7 +7,7 @@ import {
   getUserEmail,
 } from 'redux/auth/auth-selectors';
 import { logout } from 'redux/auth/auth-operations';
-import { Wrapper, P } from './styled';
+import { Wrapper, P } from './UserMenu-styled';
 
 export default function UserMenu() {
   const isLoggedIn = useSelector(getIsLoggedIn);

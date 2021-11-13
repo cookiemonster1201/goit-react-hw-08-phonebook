@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import Button from 'components/Button/Button';
-import { Input } from 'components/ContactsForm/styled';
+import { Input } from 'components/ContactsForm/ContactsForm-styled';
 import { useEditContactMutation } from 'redux/contactsApi/contacts-slice';
-import { Ul, Li, Form } from './styled';
+import { Ul, Li, Form } from './EditForm-styled';
 
 export default function EditForm({ handleEdit, dismissEditing, name, number }) {
   const [newName, setNewName] = useState(name);
   const [newNumber, setNewNumber] = useState(number);
+  // eslint-disable-next-line
   const [editContact, { isLoading: isProcessingEditedContact }] =
     useEditContactMutation();
 
@@ -24,6 +25,19 @@ export default function EditForm({ handleEdit, dismissEditing, name, number }) {
       default:
         break;
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+    // eslint-disable-next-line
+  }, []);
+
+  const handleEsc = ({ code }) => {
+    if (code !== 'Escape') {
+      return;
+    }
+    dismissEditing();
   };
 
   const handleSubmit = e => {

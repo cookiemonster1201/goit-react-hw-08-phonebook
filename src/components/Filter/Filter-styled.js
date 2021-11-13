@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input } from 'components/ContactsForm/styled';
+import { Input } from 'components/ContactsForm/ContactsForm-styled';
 
 export const FilterInput = styled(Input)`
   margin: 0 auto;

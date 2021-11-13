@@ -1,7 +1,7 @@
 import AppBar from 'components/Header/AppBar/AppBar';
-import { PageHeader, Div, Wrapper, Span } from './styled';
+import { PageHeader, Div, Wrapper, Span } from './Header-styled';
 import { ReactComponent as Logo } from './logo.svg';
-import { LogoWrapper } from './styled';
+import { LogoWrapper } from './Header-styled';
 import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
 
 export default function Header() {
@@ -9,10 +9,12 @@ export default function Header() {
     <PageHeader>
       <Wrapper>
         <ThemeToggle />
-        <Span>PB</Span>
-        <LogoWrapper>
-          <Logo />
-        </LogoWrapper>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Span>PB</Span>
+          <LogoWrapper>
+            <Logo />
+          </LogoWrapper>
+        </div>
       </Wrapper>
       <Div>
         <AppBar />

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
 import Button from 'components/Button/Button';
-import { login } from 'redux/auth/auth-operations';
-import { StyledAuthForm, StyledInput } from './styled';
+import { login, refreshUser } from 'redux/auth/auth-operations';
+import { StyledAuthForm, StyledInput } from './LoginForm-styled';
 import { getIsAuthorizing } from 'redux/auth/auth-selectors';
 
 export default function LoginForm() {

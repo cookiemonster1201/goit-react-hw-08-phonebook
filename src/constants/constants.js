@@ -5,3 +5,5 @@ export const SERVICE_LIST = [
   'Help & support',
   'Advertise with us',
 ];
+
+export const footerHeight = 90;

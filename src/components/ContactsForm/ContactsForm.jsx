@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import Loader from 'react-loader-spinner';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {
   useGetAllContactsQuery,
   useAddContactMutation,
 } from 'redux/contactsApi/contacts-slice';
-import doesContactExists from 'utils/does-contact-exists';
+import doesContactExist from 'utils/does-contact-exist';
 import Button from 'components/Button/Button';
-import { Form, Input } from './styled';
+import { Form, Input } from './ContactsForm-styled';
 import {
   showErrorNotification,
   showSuccessNotification,
@@ -41,7 +39,7 @@ export default function ContactsForm() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (doesContactExists(contacts, name, number)) {
+    if (doesContactExist(contacts, name, number)) {
       return;
     }
     try {

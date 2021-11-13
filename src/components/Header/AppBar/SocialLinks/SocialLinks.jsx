@@ -1,7 +1,7 @@
 import { ReactComponent as LinkedIn } from './icons/linkedin.svg';
 import { ReactComponent as Facebook } from './icons/facebook.svg';
 import { ReactComponent as Instagram } from './icons/instagram.svg';
-import { IconWrapper, Ul, Li, Link } from './styled';
+import { IconWrapper, Ul, Li, Link } from './SocialLinks-styled';
 
 export default function SocialLinks() {
   return (

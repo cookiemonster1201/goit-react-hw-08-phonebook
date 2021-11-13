@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconWrapper } from './AppBar/SocialLinks/styled';
+import { IconWrapper } from './AppBar/SocialLinks/SocialLinks-styled';
 
 export const PageHeader = styled.header`
   display: flex;
@@ -15,7 +15,7 @@ export const Div = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 90px;
 
@@ -33,4 +33,7 @@ export const LogoWrapper = styled(IconWrapper)`
   height: 35px;
   fill: var(--white);
   margin-left: 10px;
+  &:hover {
+    fill: var(--white);
+  }
 `;

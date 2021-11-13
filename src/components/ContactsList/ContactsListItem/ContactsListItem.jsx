@@ -13,9 +13,13 @@ import {
   showSuccessNotification,
 } from 'utils/notifications';
 import defaultAvatar from './avatar.png';
-import { Avatar } from '../styled';
+import { Avatar } from '../ContactsList-styled';
+import doesContactExist from 'utils/does-contact-exist';
 
-export default function ContactsListItem({ contact: { name, number, id } }) {
+export default function ContactsListItem({
+  contact: { name, number, id },
+  allContacts,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [editContact] = useEditContactMutation();
@@ -42,6 +46,15 @@ export default function ContactsListItem({ contact: { name, number, id } }) {
     }
 
     if (fieldsToUpdate.number || fieldsToUpdate.name) {
+      if (
+        doesContactExist(
+          allContacts,
+          fieldsToUpdate.name,
+          fieldsToUpdate.number,
+        )
+      ) {
+        return;
+      }
       try {
         await editContact({ id, ...fieldsToUpdate });
         showSuccessNotification('Contact has been changed!');
@@ -130,4 +143,5 @@ ContactsListItem.propTypes = {
     number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,
+  allContacts: PropTypes.arrayOf(PropTypes.shape),
 };

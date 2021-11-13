@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ContactsList from 'components/ContactsList/ContactsList';
 import filterContacts from 'utils/filter-contacts';
-import { FilterInput } from './styled';
+import { FilterInput } from './Filter-styled';
 
 export default function Filter({ contacts }) {
   const [inputValue, setInputValue] = useState('');

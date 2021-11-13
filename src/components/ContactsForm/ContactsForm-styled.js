@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { inputBgColor } from 'redux/theme/themes';
 export const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -13,8 +14,8 @@ export const Input = styled.input`
   padding: 12px;
   font-size: 18px;
   color: #495057;
-  background-color: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.25);
+  background-color: ${inputBgColor};
   border-radius: 5px;
   &::placeholder {
     font-size: 16px;

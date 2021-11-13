@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { iconFill } from 'redux/theme/themes';
 
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
-  background-color: var(--white);
+
   list-style: none;
 `;
 export const Li = styled.li`
@@ -15,7 +16,7 @@ export const Link = styled.a`
   transition: fill 200ms linear;
 `;
 export const IconWrapper = styled.svg`
-  fill: #495057;
+  fill: ${iconFill};
   width: 20px;
   height: 20px;
   cursor: pointer;

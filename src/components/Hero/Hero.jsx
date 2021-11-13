@@ -1,5 +1,5 @@
 import ContactsForm from 'components/ContactsForm/ContactsForm';
-import { HeroSection, HeroWrapper } from './styled';
+import { HeroSection, HeroWrapper } from './Hero-styled';
 
 export default function Hero() {
   return (

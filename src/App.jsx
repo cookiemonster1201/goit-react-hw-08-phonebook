@@ -1,11 +1,9 @@
 import { ToastContainer } from 'react-toastify';
-import styled, { ThemeProvider } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { AnimatedSwitch } from 'react-router-transition';
-// import { ThemeProvider } from 'styled-components';
 import Loader from 'react-loader-spinner';
 import s from 'animations/route-transitions.module.css';
 import { bounceTransition, mapStyles } from 'animations/animated-switch';
@@ -35,50 +33,50 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <>
-      {!isRefreshing && (
-        <>
-          <DarkThemeProvider>
-            <Container>
-              <Header />
+    <DarkThemeProvider>
+      <Container>
+        {isRefreshing ? (
+          <h1>skeleton</h1>
+        ) : (
+          <>
+            <Header />
+            <AnimatedSwitch
+              atEnter={bounceTransition.atEnter}
+              atLeave={bounceTransition.atLeave}
+              atActive={bounceTransition.atActive}
+              mapStyles={mapStyles}
+              className={s.routeWrapper}
+              runOnMount
+            >
               <Suspense
                 fallback={
                   <Loader
                     type="Oval"
-                    color="#fffb1e"
+                    color="#ffb01e"
                     height={80}
                     width={80}
                     style={{ textAlign: 'center' }}
                   />
                 }
               >
-                <AnimatedSwitch
-                  atEnter={bounceTransition.atEnter}
-                  atLeave={bounceTransition.atLeave}
-                  atActive={bounceTransition.atActive}
-                  mapStyles={mapStyles}
-                  className={s.routeWrapper}
-                  runOnMount
-                >
-                  <PublicRoute path="/login" restricted exact>
-                    <LoginView />
-                  </PublicRoute>
+                <PublicRoute path="/login" restricted exact>
+                  <LoginView />
+                </PublicRoute>
 
-                  <PublicRoute path="/register" restricted exact>
-                    <RegistrationView />
-                  </PublicRoute>
+                <PublicRoute path="/register" restricted exact>
+                  <RegistrationView />
+                </PublicRoute>
 
-                  <PrivateRoute path="/contacts" exact>
-                    <ContactsView />
-                  </PrivateRoute>
-                  <Redirect to="/login" />
-                </AnimatedSwitch>
+                <PrivateRoute path="/contacts" exact>
+                  <ContactsView />
+                </PrivateRoute>
+                <Redirect to="/login" />
               </Suspense>
-            </Container>
-            <ToastContainer />
-          </DarkThemeProvider>
-        </>
-      )}
-    </>
+            </AnimatedSwitch>
+          </>
+        )}
+      </Container>
+      <ToastContainer />
+    </DarkThemeProvider>
   );
 }

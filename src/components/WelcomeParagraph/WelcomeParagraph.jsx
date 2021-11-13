@@ -1,4 +1,4 @@
-import { P, H1 } from './styled';
+import { P, H1 } from './WelcomeParagraph-styled';
 export default function WelcomeParagraph() {
   return (
     <div>

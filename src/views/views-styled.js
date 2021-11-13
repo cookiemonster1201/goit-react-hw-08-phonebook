@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { footerHeight } from 'constants/constants';
+import { backgroundColor, textColor } from 'redux/theme/themes';
+
 export const Main = styled.div`
   display: flex;
   justify-content: space-around;
@@ -10,5 +13,6 @@ export const ViewWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 90px);
+  background-color: ${backgroundColor};
+  color: ${textColor};
 `;

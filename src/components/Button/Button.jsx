@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { StyledButton } from './styled';
+import { StyledButton } from './Button-styled';
 export default function Button({ text, onClick, type, ...otherProps }) {
   return (
     <StyledButton type={type} onClick={onClick} {...otherProps}>

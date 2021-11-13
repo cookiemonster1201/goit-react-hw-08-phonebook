@@ -13,16 +13,14 @@ export const Li = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  width: 550px;
+  width: 580px;
   font-size: 20px;
-  color: var(--light-theme-primary-text-color);
   &:not(:last-child) {
     margin-bottom: 20px;
   }
 `;
 
 export const P = styled.p`
-  color: var(--light-theme-primary-text-color);
   font-size: 20px;
   text-align: center;
   padding: 40px;
