@@ -1,8 +1,7 @@
 import { ToastContainer } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { AnimatedSwitch } from 'react-router-transition';
 import Loader from 'react-loader-spinner';
 import s from 'animations/route-transitions.module.css';
@@ -12,8 +11,8 @@ import DarkThemeProvider from 'components/DarkThemeProvider/DarkThemeProvider';
 import Header from 'components/Header/Header';
 import PrivateRoute from 'components/Routes/PrivateRoute';
 import PublicRoute from 'components/Routes/PublicRroute';
-import { refreshUser } from 'redux/auth/auth-operations';
 import { getIsRefreshing } from 'redux/auth/auth-selectors';
+import { refreshUser } from 'redux/auth/auth-operations';
 const ContactsView = lazy(() =>
   import('views/ContactsView'),
 ); /* WebpackChunkName: "contacts-view" */
@@ -25,58 +24,59 @@ const RegistrationView = lazy(() =>
 ); /* WebpackChunkName: "registration-view" */
 
 export default function App() {
-  const dispatch = useDispatch();
   const isRefreshing = useSelector(getIsRefreshing);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   return (
-    <DarkThemeProvider>
-      <Container>
-        {isRefreshing ? (
-          <h1>skeleton</h1>
-        ) : (
-          <>
-            <Header />
-            <AnimatedSwitch
-              atEnter={bounceTransition.atEnter}
-              atLeave={bounceTransition.atLeave}
-              atActive={bounceTransition.atActive}
-              mapStyles={mapStyles}
-              className={s.routeWrapper}
-              runOnMount
-            >
+    <>
+      <DarkThemeProvider>
+        <Container>
+          {isRefreshing ? (
+            <h1>ha</h1>
+          ) : (
+            <>
+              <Header />
               <Suspense
                 fallback={
                   <Loader
                     type="Oval"
-                    color="#ffb01e"
+                    color="#fffb1e"
                     height={80}
                     width={80}
                     style={{ textAlign: 'center' }}
                   />
                 }
               >
-                <PublicRoute path="/login" restricted exact>
-                  <LoginView />
-                </PublicRoute>
+                <AnimatedSwitch
+                  atEnter={bounceTransition.atEnter}
+                  atLeave={bounceTransition.atLeave}
+                  atActive={bounceTransition.atActive}
+                  mapStyles={mapStyles}
+                  className={s.routeWrapper}
+                  runOnMount
+                >
+                  <PublicRoute path="/login" restricted exact>
+                    <LoginView />
+                  </PublicRoute>
 
-                <PublicRoute path="/register" restricted exact>
-                  <RegistrationView />
-                </PublicRoute>
+                  <PublicRoute path="/register" restricted exact>
+                    <RegistrationView />
+                  </PublicRoute>
 
-                <PrivateRoute path="/contacts" exact>
-                  <ContactsView />
-                </PrivateRoute>
-                <Redirect to="/login" />
+                  <PrivateRoute path="/contacts" exact>
+                    <ContactsView />
+                  </PrivateRoute>
+                  <Redirect to="/login" />
+                </AnimatedSwitch>
               </Suspense>
-            </AnimatedSwitch>
-          </>
-        )}
-      </Container>
-      <ToastContainer />
-    </DarkThemeProvider>
+            </>
+          )}
+        </Container>
+        <ToastContainer />
+      </DarkThemeProvider>
+    </>
   );
 }

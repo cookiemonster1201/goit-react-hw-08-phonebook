@@ -5,6 +5,7 @@ export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
+    refetchOnMountOrArgChange: true,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {

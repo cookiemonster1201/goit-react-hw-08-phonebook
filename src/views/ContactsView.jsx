@@ -4,10 +4,15 @@ import Footer from 'components/Footer/Footer';
 import { ViewWrapper } from './views-styled';
 import { useGetAllContactsQuery } from 'redux/contactsApi/contacts-slice';
 import { footerHeight } from 'constants/constants';
+import { useEffect } from 'react';
 
 export default function ContactsView() {
-  const { data: contacts, isError } = useGetAllContactsQuery();
-  console.log(contacts);
+  const { data: contacts, refetch } = useGetAllContactsQuery();
+
+  useEffect(() => {
+    refetch();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <ViewWrapper

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
 
 import Button from 'components/Button/Button';
-import { login, refreshUser } from 'redux/auth/auth-operations';
+import { login } from 'redux/auth/auth-operations';
 import { StyledAuthForm, StyledInput } from './LoginForm-styled';
 import { getIsAuthorizing } from 'redux/auth/auth-selectors';
 
@@ -28,15 +28,9 @@ export default function LoginForm() {
     }
   };
 
-  const resetFields = () => {
-    setPassword('');
-    setEmail('');
-  };
-
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    resetFields();
   };
 
   return (

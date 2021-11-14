@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { footerHeight } from 'constants/constants';
 import { backgroundColor, textColor } from 'redux/theme/themes';
 
 export const Main = styled.div`
