@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Input } from 'components/ContactsForm/ContactsForm-styled';
+import { boxShadow } from 'redux/theme/themes';
 
 export const StyledAuthForm = styled(Form)`
   flex-direction: column;
@@ -9,7 +10,7 @@ export const StyledAuthForm = styled(Form)`
   margin-top: 50px;
   border: 1px solid #cfcfcf;
   border-radius: 3px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${boxShadow};
 `;
 export const StyledInput = styled(Input)`
   margin-bottom: 40px;
