@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { useState } from 'react';
-
+import { motion } from '../../../../node_modules/framer-motion/dist/framer-motion';
 import Button from 'components/Button/Button';
 import EditForm from 'components/EditForm/EditForm';
 import {
@@ -13,8 +13,9 @@ import {
   showSuccessNotification,
 } from 'utils/notifications';
 import defaultAvatar from './avatar.png';
-import { Avatar } from '../ContactsList-styled';
+import { Avatar } from 'components/ContactsList/ContactsList-styled';
 import doesContactExist from 'utils/does-contact-exist';
+import { ContactWrapper } from 'components/ContactsList/ContactsList-styled';
 
 export default function ContactsListItem({
   contact: { name, number, id },
@@ -80,7 +81,12 @@ export default function ContactsListItem({
           number={number}
         />
       ) : (
-        <>
+        <ContactWrapper
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <p>
             {name}: {number}
           </p>
@@ -131,7 +137,7 @@ export default function ContactsListItem({
               />
             </li>
           </ul>
-        </>
+        </ContactWrapper>
       )}
     </>
   );

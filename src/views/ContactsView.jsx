@@ -5,6 +5,10 @@ import { ViewWrapper } from './views-styled';
 import { useGetAllContactsQuery } from 'redux/contactsApi/contacts-slice';
 import { footerHeight } from 'constants/constants';
 import { useEffect } from 'react';
+import {
+  AnimateSharedLayout,
+  motion,
+} from '../../node_modules/framer-motion/dist/framer-motion';
 
 export default function ContactsView() {
   const { data: contacts, refetch } = useGetAllContactsQuery();
@@ -15,17 +19,21 @@ export default function ContactsView() {
   }, []);
 
   return (
-    <ViewWrapper
-      style={{
-        height:
-          contacts && contacts.length > 0
-            ? 'auto'
-            : `calc(100vh - ${footerHeight}px)`,
-      }}
-    >
-      <Hero />
-      {contacts && <Filter contacts={contacts} />}
-      <Footer />
-    </ViewWrapper>
+    <AnimateSharedLayout>
+      <ViewWrapper
+        style={{
+          height:
+            contacts && contacts.length > 0
+              ? 'auto'
+              : `calc(100vh - ${footerHeight}px)`,
+        }}
+      >
+        <Hero />
+        <motion.div layout>
+          {contacts && <Filter contacts={contacts} />}
+          <Footer />
+        </motion.div>
+      </ViewWrapper>
+    </AnimateSharedLayout>
   );
 }

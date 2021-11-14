@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
-
 import Button from 'components/Button/Button';
 import { login } from 'redux/auth/auth-operations';
 import { StyledAuthForm, StyledInput } from './LoginForm-styled';

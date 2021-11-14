@@ -10,14 +10,20 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 5px;
-  width: 580px;
-  font-size: 20px;
+  width: 650px;
   &:not(:last-child) {
     margin-bottom: 20px;
   }
+`;
+
+export const ContactWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
 `;
 
 export const P = styled.p`
@@ -29,4 +35,5 @@ export const P = styled.p`
 export const Avatar = styled.img`
   width: 60px;
   height: 60px;
+  margin-right: 15px;
 `;

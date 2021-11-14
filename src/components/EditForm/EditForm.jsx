@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from '../../../node_modules/framer-motion/dist/framer-motion';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import Button from 'components/Button/Button';
@@ -46,7 +47,13 @@ export default function EditForm({ handleEdit, dismissEditing, name, number }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      as={motion.form}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div>
         <Input
           type="text"

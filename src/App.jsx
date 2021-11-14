@@ -35,7 +35,13 @@ export default function App() {
       <DarkThemeProvider>
         <Container>
           {isRefreshing ? (
-            <h1>ha</h1>
+            <Loader
+              type="Oval"
+              color="#ffb01e"
+              height={100}
+              width={100}
+              style={{ textAlign: 'center', marginTop: '300px' }}
+            />
           ) : (
             <>
               <Header />
@@ -43,10 +49,10 @@ export default function App() {
                 fallback={
                   <Loader
                     type="Oval"
-                    color="#fffb1e"
-                    height={80}
-                    width={80}
-                    style={{ textAlign: 'center' }}
+                    color="#ffb01e"
+                    height={100}
+                    width={100}
+                    style={{ textAlign: 'center', marginTop: '300px' }}
                   />
                 }
               >
