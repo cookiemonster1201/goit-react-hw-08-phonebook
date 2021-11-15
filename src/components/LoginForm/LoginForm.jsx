@@ -49,8 +49,6 @@ export default function LoginForm() {
         name="password"
         onChange={handleStateChange}
         value={password}
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        title="Пароль должен содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 8"
         placeholder="Enter password"
         required
       />
