@@ -4,6 +4,12 @@ import { ReactComponent as Logo } from './logo.svg';
 import { LogoWrapper } from './Header-styled';
 import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
 
+import FacebookLogin from 'react-facebook-login';
+
+const responseFacebook = (response) => {
+  console.log(response);
+}
+
 export default function Header() {
   return (
     <PageHeader>
@@ -11,6 +17,14 @@ export default function Header() {
         <ThemeToggle />
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Span>PB</Span>
+          <FacebookLogin
+    appId="1423018008123489"
+    autoLoad={true}
+    fields="name,email,picture"
+    onClick={() => {
+      console.log('hello')
+    }}
+    callback={responseFacebook} />
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
